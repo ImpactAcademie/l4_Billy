@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f0eee4">
+	<meta name="description" content="Carnet de terrain consacré aux éléphants : espèces, vie sociale, habitats et conservation.">
+	<title>Éléphant — Géants sensibles</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--paper: #f0eee4;
+			--ink: #252d28;
+			--muted: #6a726a;
+			--forest: #294e3f;
+			--forest-dark: #1d3b31;
+			--ochre: #c07843;
+			--sun: #dfc66d;
+			--line: #d4d4c7;
+			--white: #faf9f2;
+			--display: "Playfair Display", Georgia, serif;
+			--sans: "DM Sans", sans-serif;
+		}
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+		body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+		button, select { font: inherit; }
+		button { color: inherit; }
+		img { display: block; width: 100%; }
+		.wrap { width: min(1190px, calc(100% - 72px)); margin: 0 auto; }
+		.topbar { height: 76px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+		.topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+		.brand { display: inline-flex; align-items: center; gap: 11px; padding: 0; border: 0; background: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: .11em; }
+		.brand-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--ochre); color: white; font: italic 500 17px var(--display); }
+		nav { display: flex; align-items: center; gap: 29px; }
+		nav button { padding: 8px 0; border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 11px; transition: color .2s; }
+		nav button:hover, nav button:focus-visible { color: var(--ochre); }
+		.top-note { color: var(--muted); font-size: 10px; }
+		.hero { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 8%; min-height: 620px; padding: 57px 0 67px; }
+		.kicker { display: flex; align-items: center; gap: 10px; margin: 0 0 20px; color: var(--ochre); font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+		.kicker::before { width: 23px; height: 1px; background: currentColor; content: ""; }
+		h1, h2, h3, p { margin-top: 0; }
+		h1 { max-width: 510px; margin-bottom: 23px; font: 500 clamp(55px, 7vw, 84px)/.96 var(--display); }
+		h1 em, h2 em { color: var(--forest); font-weight: 500; }
+		.hero-copy { max-width: 430px; margin-bottom: 25px; color: var(--muted); font-size: 13px; line-height: 1.9; }
+		.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+		.btn { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 16px; padding: 0 17px; border: 1px solid var(--forest); border-radius: 2px; background: var(--forest); color: white; cursor: pointer; font-size: 11px; font-weight: 600; transition: transform .2s, background .2s; }
+		.btn:hover { transform: translateY(-2px); background: var(--forest-dark); }
+		.btn-quiet { border-color: var(--line); background: transparent; color: var(--ink); }
+		.btn-quiet:hover { border-color: var(--forest); background: transparent; color: var(--forest); }
+		.hero-caption { display: flex; align-items: center; gap: 10px; margin-top: 35px; color: var(--muted); font-size: 10px; }
+		.hero-caption strong { color: var(--ink); font-weight: 600; }
+		.caption-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sun); }
+		.hero-visual { position: relative; padding: 0 20px 20px 0; }
+		.hero-visual::after { position: absolute; z-index: -1; right: 0; bottom: 0; width: 68%; height: 72%; background: var(--sun); content: ""; }
+		.hero-image { height: 470px; object-fit: cover; object-position: center 47%; }
+		.hero-index { position: absolute; top: 18px; left: -20px; display: grid; place-items: center; width: 51px; height: 51px; border-radius: 50%; background: var(--forest); color: white; font: italic 500 16px var(--display); }
+		.photo-note { position: absolute; right: -14px; bottom: 38px; width: 190px; padding: 15px 17px; background: var(--white); }
+		.photo-note small { display: block; margin-bottom: 6px; color: var(--ochre); font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+		.photo-note strong { font: 500 17px/1.3 var(--display); }
+		.facts { display: grid; grid-template-columns: 1.25fr repeat(3, 1fr); align-items: center; gap: 25px; padding: 23px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+		.facts-intro { max-width: 230px; margin: 0; color: var(--muted); font-size: 10px; line-height: 1.8; }
+		.fact { display: flex; align-items: center; gap: 10px; }
+		.fact b { color: var(--ochre); font: 500 27px var(--display); white-space: nowrap; }
+		.fact span { max-width: 103px; color: var(--muted); font-size: 9px; line-height: 1.55; }
+		.section { padding: 98px 0; }
+		.section-head { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 30px; }
+		.section-head h2, .compare-copy h2 { margin: 0; font: 500 clamp(38px, 4.8vw, 58px)/1.04 var(--display); }
+		.section-head > p { max-width: 310px; margin: 0 0 3px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+		.species-tools { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-bottom: 22px; }
+		.filter-row { display: flex; flex-wrap: wrap; gap: 7px; }
+		.filter { min-height: 34px; padding: 0 12px; border: 1px solid var(--line); border-radius: 2px; background: transparent; color: var(--muted); cursor: pointer; font-size: 10px; transition: .2s; }
+		.filter:hover, .filter[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: white; }
+		.species-count { color: var(--muted); font-size: 10px; }
+		.species-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; }
+		.species-card { min-width: 0; background: var(--white); animation: appear .35s both; }
+		.species-card[hidden] { display: none; }
+		.species-image { aspect-ratio: 1.18; object-fit: cover; }
+		.species-info { padding: 17px 17px 19px; }
+		.species-type { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 9px; color: var(--ochre); font-size: 9px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+		.species-info h3 { margin-bottom: 8px; font: 500 22px var(--display); }
+		.species-info p { min-height: 56px; margin-bottom: 14px; color: var(--muted); font-size: 11px; line-height: 1.75; }
+		.species-data { display: flex; justify-content: space-between; gap: 9px; padding-top: 11px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
+		.species-data strong { color: var(--ink); font-weight: 600; }
+		.empty { display: none; padding: 35px 0; color: var(--muted); font-size: 12px; text-align: center; }
+		.wild { background: var(--forest-dark); color: var(--white); }
+		.wild .section { padding: 82px 0; }
+		.wild .kicker { color: var(--sun); }
+		.wild .section-head h2 em { color: var(--sun); }
+		.wild .section-head > p { color: #d5ded4; }
+		.wild-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #ffffff40; }
+		.wild-item { min-height: 207px; padding: 24px 24px 19px 0; border-bottom: 1px solid #ffffff40; }
+		.wild-item + .wild-item { padding-left: 24px; border-left: 1px solid #ffffff40; }
+		.wild-number { display: block; margin-bottom: 22px; color: var(--sun); font: italic 500 16px var(--display); }
+		.wild-item h3 { margin-bottom: 10px; font: 500 20px var(--display); }
+		.wild-item p { max-width: 295px; margin: 0; color: #d5ded4; font-size: 10px; line-height: 1.85; }
+		.wild-note { display: flex; gap: 14px; margin-top: 20px; padding: 15px 17px; background: #ffffff12; color: #e3e9df; font-size: 10px; line-height: 1.7; }
+		.wild-note strong { flex: 0 0 auto; color: var(--sun); text-transform: uppercase; letter-spacing: .07em; }
+		.compare { display: grid; grid-template-columns: .78fr 1.22fr; align-items: start; gap: 9%; }
+		.compare-copy h2 { margin-bottom: 14px; }
+		.compare-copy > p:last-child { max-width: 320px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+		.compare-panel { padding: 24px; border: 1px solid var(--line); background: var(--white); }
+		.compare-top { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 19px; }
+		.compare-top strong { font-size: 11px; }
+		.compare-top span { color: var(--muted); font-size: 9px; }
+		.selects { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+		.field label { display: block; margin-bottom: 8px; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+		.field select { width: 100%; height: 43px; padding: 0 10px; border: 1px solid var(--line); border-radius: 2px; background: var(--paper); color: var(--ink); font-size: 10px; }
+		.comparison-result { display: flex; align-items: flex-start; gap: 13px; min-height: 83px; margin-top: 17px; padding: 14px; background: #e8ece1; }
+		.result-icon { display: grid; flex: 0 0 29px; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--sun); color: var(--forest-dark); font: italic 500 15px var(--display); }
+		.comparison-result p { margin: 0; color: #52614e; font-size: 10px; line-height: 1.75; }
+		.comparison-result strong { color: var(--ink); }
+		.conservation { display: grid; grid-template-columns: 1fr 1fr; min-height: 350px; background: #e3d8c4; }
+		.conservation img { height: 100%; min-height: 350px; object-fit: cover; object-position: center 49%; }
+		.conservation-copy { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 43px clamp(28px, 7vw, 79px); }
+		.conservation-copy h2 { max-width: 390px; margin-bottom: 14px; font: 500 clamp(35px, 4.3vw, 51px)/1.06 var(--display); }
+		.conservation-copy h2 em { color: var(--ochre); }
+		.conservation-copy > p:not(.kicker) { max-width: 360px; margin-bottom: 21px; color: #625e51; font-size: 11px; line-height: 1.8; }
+		footer { display: flex; justify-content: space-between; gap: 18px; padding: 22px 0; color: var(--muted); font-size: 9px; }
+		footer strong { color: var(--ink); font-size: 10px; letter-spacing: .08em; }
+		.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+		.reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+		.reveal.visible { opacity: 1; transform: translateY(0); }
+		@keyframes appear { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+		@media (max-width: 850px) {
+			.wrap { width: min(100% - 44px, 690px); }
+			.top-note { display: none; }
+			.hero { gap: 5%; min-height: 550px; }
+			.hero-image { height: 400px; }
+			.facts { grid-template-columns: repeat(3, 1fr); }
+			.facts-intro { grid-column: 1 / -1; max-width: 430px; }
+			.section { padding: 78px 0; }
+			.compare { gap: 5%; }
+		}
+		@media (max-width: 600px) {
+			.wrap { width: calc(100% - 36px); }
+			.topbar { height: 67px; }
+			.topbar-inner { gap: 12px; }
+			nav { gap: 13px; }
+			nav button { font-size: 9px; }
+			nav button:last-child { display: none; }
+			.brand { font-size: 10px; }
+			.hero { grid-template-columns: 1fr; gap: 27px; padding: 46px 0 42px; }
+			h1 { font-size: clamp(55px, 15vw, 72px); }
+			.hero-copy { font-size: 12px; }
+			.hero-image { height: 335px; }
+			.hero-index { left: -7px; width: 45px; height: 45px; }
+			.photo-note { right: -5px; bottom: 32px; width: 166px; padding: 12px; }
+			.facts { gap: 13px 7px; padding: 17px 0; }
+			.fact { align-items: flex-start; gap: 5px; }
+			.fact b { font-size: 22px; }
+			.fact span { font-size: 8px; }
+			.section { padding: 65px 0; }
+			.section-head { display: block; margin-bottom: 24px; }
+			.section-head > p { margin-top: 14px; }
+			.species-tools { align-items: flex-start; flex-direction: column; gap: 11px; }
+			.filter-row { gap: 6px; }
+			.filter { min-height: 32px; padding: 0 9px; font-size: 9px; }
+			.species-grid { grid-template-columns: 1fr; gap: 12px; }
+			.species-card { display: grid; grid-template-columns: .85fr 1.15fr; }
+			.species-card[hidden] { display: none; }
+			.species-image { height: 100%; min-height: 205px; aspect-ratio: auto; }
+			.species-info { padding: 13px 12px; }
+			.species-info h3 { font-size: 19px; }
+			.species-info p { min-height: 0; font-size: 10px; }
+			.species-data { flex-wrap: wrap; font-size: 8px; }
+			.wild .section { padding: 65px 0; }
+			.wild-grid { grid-template-columns: 1fr; }
+			.wild-item, .wild-item + .wild-item { min-height: 0; padding: 19px 0; border-left: 0; }
+			.wild-number { margin-bottom: 10px; }
+			.wild-note { flex-direction: column; gap: 5px; }
+			.compare { grid-template-columns: 1fr; gap: 20px; }
+			.compare-panel { padding: 16px; }
+			.selects { gap: 9px; }
+			.field select { padding: 0 7px; font-size: 9px; }
+			.conservation { grid-template-columns: 1fr; }
+			.conservation img { min-height: 225px; height: 225px; }
+			.conservation-copy { padding: 34px 22px 37px; }
+			footer { flex-direction: column; gap: 7px; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+			.reveal { opacity: 1; transform: none; }
+		}
+	</style>
+</head>
+<body>
+	<header class="topbar">
+		<div class="wrap topbar-inner">
+			<button class="brand" type="button" data-go="top" aria-label="Retour en haut"><span class="brand-icon" aria-hidden="true">É</span> CARNET SAUVAGE</button>
+			<nav aria-label="Navigation principale">
+				<button type="button" data-go="especes">Les espèces</button>
+				<button type="button" data-go="vivre">Vie sauvage</button>
+				<button type="button" data-go="protection">Conservation</button>
+			</nav>
+			<span class="top-note">Faune · Afrique & Asie</span>
+		</div>
+	</header>
+
+	<main id="top">
+		<section class="wrap hero">
+			<div class="reveal">
+				<p class="kicker">Carnet de terrain · 03</p>
+				<h1>Éléphant,<br>géant <em>sensible.</em></h1>
+				<p class="hero-copy">Il avance avec la lenteur d'un continent et se souvient des chemins que ses ancêtres lui ont appris. Derrière sa force immense, l'éléphant vit en famille, communique à distance et façonne les paysages qu'il traverse.</p>
+				<div class="actions">
+					<button class="btn" type="button" data-go="especes">Découvrir les espèces <span aria-hidden="true">→</span></button>
+					<button class="btn btn-quiet" type="button" data-go="vivre">Sa vie en famille</button>
+				</div>
+				<div class="hero-caption"><strong>Une présence qui transforme son paysage.</strong><span class="caption-dot"></span>Le monde des éléphants</div>
+			</div>
+			<div class="hero-visual reveal">
+				<img class="hero-image" src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=1300&q=85" alt="Éléphant d'Afrique dans son habitat naturel" fetchpriority="high">
+				<span class="hero-index">01</span>
+				<div class="photo-note"><small>Rencontre sauvage</small><strong>La mémoire a de grandes oreilles.</strong></div>
+			</div>
+		</section>
+
+		<section class="wrap facts" aria-label="Repères sur les éléphants">
+			<p class="facts-intro">Trois espèces vivantes, des sociétés soudées et une présence essentielle à l'équilibre de nombreux écosystèmes.</p>
+			<div class="fact"><b>3</b><span>espèces d'éléphants encore vivantes</span></div>
+			<div class="fact"><b>22 mois</b><span>de gestation chez l'éléphant d'Afrique</span></div>
+			<div class="fact"><b>40 000</b><span>muscles dans une trompe remarquable</span></div>
+		</section>
+
+		<section class="wrap section" id="especes">
+			<div class="section-head reveal">
+				<div><p class="kicker">Trois espèces, trois mondes</p><h2>Reconnaître<br><em>les géants.</em></h2></div>
+				<p>La savane, la forêt tropicale et les paysages d'Asie abritent des espèces différentes, chacune adaptée à son environnement.</p>
+			</div>
+			<div class="species-tools">
+				<div class="filter-row" role="group" aria-label="Filtrer les espèces">
+					<button class="filter" type="button" data-filter="all" aria-pressed="true">Toutes les espèces</button>
+					<button class="filter" type="button" data-filter="afrique" aria-pressed="false">Afrique</button>
+					<button class="filter" type="button" data-filter="asie" aria-pressed="false">Asie</button>
+					<button class="filter" type="button" data-filter="foret" aria-pressed="false">Forêt tropicale</button>
+				</div>
+				<span class="species-count" id="species-count" aria-live="polite">3 espèces présentées</span>
+			</div>
+			<div class="species-grid" id="species-grid">
+				<article class="species-card" data-tags="afrique savane" data-name="éléphant de savane d'afrique">
+					<img class="species-image" src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?auto=format&fit=crop&w=900&q=82" alt="Éléphant de savane dans une plaine africaine" loading="lazy">
+					<div class="species-info"><div class="species-type"><span>Loxodonta africana</span><span>Afrique</span></div><h3>Éléphant de savane</h3><p>Le plus grand animal terrestre. Ses grandes oreilles l'aident à réguler sa température dans les plaines chaudes.</p><div class="species-data"><span>Habitat <strong>Savane</strong></span><span>Oreilles <strong>Très larges</strong></span></div></div>
+				</article>
+				<article class="species-card" data-tags="afrique foret" data-name="éléphant de forêt d'afrique">
+					<img class="species-image" src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=900&q=82" alt="Éléphants évoluant sous la végétation forestière" loading="lazy">
+					<div class="species-info"><div class="species-type"><span>Loxodonta cyclotis</span><span>Afrique centrale</span></div><h3>Éléphant de forêt</h3><p>Plus petit et discret, il parcourt les forêts denses d'Afrique centrale et disperse de nombreuses graines.</p><div class="species-data"><span>Habitat <strong>Forêt dense</strong></span><span>Défenses <strong>Plus droites</strong></span></div></div>
+				</article>
+				<article class="species-card" data-tags="asie foret" data-name="éléphant d'asie">
+					<img class="species-image" src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=900&q=82" alt="Éléphant d'Asie dans un paysage verdoyant" loading="lazy">
+					<div class="species-info"><div class="species-type"><span>Elephas maximus</span><span>Asie</span></div><h3>Éléphant d'Asie</h3><p>Il peuple forêts et prairies d'Asie du Sud et du Sud-Est. Ses oreilles sont plus petites que celles de ses cousins africains.</p><div class="species-data"><span>Habitat <strong>Forêt & prairie</strong></span><span>Dos <strong>Arrondi</strong></span></div></div>
+				</article>
+			</div>
+			<p class="empty" id="empty-state">Aucune espèce ne correspond à ce filtre.</p>
+		</section>
+
+		<div class="wild" id="vivre">
+			<section class="wrap section">
+				<div class="section-head reveal">
+					<div><p class="kicker">Une vie en société</p><h2>La force du<br><em>lien familial.</em></h2></div>
+					<p>Les éléphants ne vivent pas seuls face au monde. Ils apprennent, s'entraident et communiquent au sein de groupes où l'expérience compte.</p>
+				</div>
+				<div class="wild-grid">
+					<article class="wild-item"><span class="wild-number">01 / La matriarche</span><h3>Une mémoire pour le groupe</h3><p>La femelle la plus expérimentée guide souvent le troupeau. Sa connaissance des points d'eau et des routes peut être vitale en période difficile.</p></article>
+					<article class="wild-item"><span class="wild-number">02 / Les vibrations</span><h3>Parler au loin</h3><p>Des sons très graves, parfois sous le seuil de l'audition humaine, voyagent sur de longues distances dans l'air et le sol.</p></article>
+					<article class="wild-item"><span class="wild-number">03 / Les paysages</span><h3>Des ingénieurs vivants</h3><p>En ouvrant des passages, en creusant et en dispersant des graines, les éléphants modifient leur habitat et aident d'autres espèces.</p></article>
+				</div>
+				<div class="wild-note"><strong>Le saviez-vous ?</strong><span>La trompe combine le nez et la lèvre supérieure. Elle sert à respirer, sentir, boire, saisir et communiquer, sans os à l'intérieur.</span></div>
+			</section>
+		</div>
+
+		<section class="wrap section compare" id="protection">
+			<div class="compare-copy reveal"><p class="kicker">Comprendre pour protéger</p><h2>Leur avenir<br><em>nous concerne.</em></h2><p>La perte d'habitat, les conflits avec les activités humaines et le braconnage menacent les populations. Des initiatives locales et la protection des corridors écologiques sont essentielles.</p></div>
+			<div class="compare-panel">
+				<div class="compare-top"><strong>Explorez les différences</strong><span>Choisissez une espèce</span></div>
+				<div class="selects">
+					<div class="field"><label for="elephant-select">Espèce</label><select id="elephant-select"><option value="savane">Éléphant de savane</option><option value="foret">Éléphant de forêt</option><option value="asie">Éléphant d'Asie</option></select></div>
+					<div class="field"><label for="topic-select">Thème</label><select id="topic-select"><option value="habitat">Habitat</option><option value="oreilles">Oreilles</option><option value="role">Rôle écologique</option></select></div>
+				</div>
+				<div class="comparison-result" aria-live="polite"><span class="result-icon" aria-hidden="true">i</span><p id="comparison-copy"><strong>Éléphant de savane · Habitat :</strong> il fréquente les savanes, les prairies et les forêts clairsemées d'Afrique subsaharienne.</p></div>
+			</div>
+		</section>
+
+		<section class="wrap conservation">
+			<img src="https://images.unsplash.com/photo-1503286666306-082b5e9e7e07?auto=format&fit=crop&w=1100&q=82" alt="Éléphant et petit dans leur habitat naturel" loading="lazy">
+			<div class="conservation-copy"><p class="kicker">Protéger les géants</p><h2>Un avenir qui se construit <em>ensemble.</em></h2><p>La conservation passe par la science, les communautés qui vivent près de la faune et la préservation de grands espaces connectés. Chaque paysage protégé abrite bien plus que des éléphants.</p><button class="btn" type="button" data-go="especes">Revoir les espèces <span aria-hidden="true">↑</span></button></div>
+		</section>
+	</main>
+	<footer class="wrap"><strong>CARNET SAUVAGE · ÉLÉPHANTS</strong><span>Observer, comprendre, préserver · 2026</span></footer>
+
+	<script>
+		document.querySelectorAll('[data-go]').forEach((button) => {
+			button.addEventListener('click', () => {
+				const target = button.dataset.go === 'top'
+					? document.documentElement
+					: document.getElementById(button.dataset.go);
+				target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			});
+		});
+
+		const filterButtons = [...document.querySelectorAll('.filter')];
+		const speciesCards = [...document.querySelectorAll('.species-card')];
+		const emptyState = document.getElementById('empty-state');
+		const speciesCount = document.getElementById('species-count');
+		let currentFilter = 'all';
+
+		function filterSpecies() {
+			let visibleCount = 0;
+			speciesCards.forEach((card) => {
+				const matches = currentFilter === 'all' || card.dataset.tags.split(' ').includes(currentFilter);
+				card.hidden = !matches;
+				if (matches) visibleCount += 1;
+			});
+			emptyState.style.display = visibleCount ? 'none' : 'block';
+			speciesCount.textContent = `${visibleCount} espèce${visibleCount === 1 ? '' : 's'} présentée${visibleCount === 1 ? '' : 's'}`;
+		}
+
+		filterButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				currentFilter = button.dataset.filter;
+				filterButtons.forEach((filter) => filter.setAttribute('aria-pressed', String(filter === button)));
+				filterSpecies();
+			});
+		});
+
+		const details = {
+			savane: {
+				habitat: 'il fréquente les savanes, les prairies et les forêts clairsemées d’Afrique subsaharienne.',
+				oreilles: 'ses très grandes oreilles l’aident à évacuer la chaleur sous le soleil des savanes.',
+				role: 'en creusant des points d’eau et en dispersant des graines, il transforme son environnement.'
+			},
+			foret: {
+				habitat: 'il vit dans les forêts tropicales denses d’Afrique centrale, notamment dans le bassin du Congo.',
+				oreilles: 'ses oreilles sont généralement plus arrondies que celles de l’éléphant de savane.',
+				role: 'grand disperseur de graines, il contribue à la régénération et à la diversité des forêts.'
+			},
+			asie: {
+				habitat: 'il habite plusieurs régions d’Asie du Sud et du Sud-Est, dans des forêts et des prairies.',
+				oreilles: 'ses oreilles sont plus petites que celles des deux espèces africaines.',
+				role: 'en se déplaçant entre les habitats, il disperse des graines et crée des passages dans la végétation.'
+			}
+		};
+		const speciesSelect = document.getElementById('elephant-select');
+		const topicSelect = document.getElementById('topic-select');
+		const comparisonCopy = document.getElementById('comparison-copy');
+		function updateComparison() {
+			const speciesName = speciesSelect.options[speciesSelect.selectedIndex].text;
+			const topicName = topicSelect.options[topicSelect.selectedIndex].text.toLocaleLowerCase('fr');
+			comparisonCopy.innerHTML = `<strong>${speciesName} · ${topicName} :</strong> ${details[speciesSelect.value][topicSelect.value]}`;
+		}
+		speciesSelect.addEventListener('change', updateComparison);
+		topicSelect.addEventListener('change', updateComparison);
+
+		const revealItems = document.querySelectorAll('.reveal');
+		if ('IntersectionObserver' in window) {
+			const revealObserver = new IntersectionObserver((entries, observer) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.12 });
+			revealItems.forEach((item) => revealObserver.observe(item));
+		} else {
+			revealItems.forEach((item) => item.classList.add('visible'));
+		}
+	</script>
+</body>
+</html>

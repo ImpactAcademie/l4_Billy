@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f7f6f0">
+	<meta name="description" content="Un guide vivant pour mieux comprendre les chiens : races, besoins quotidiens et conseils pour prendre soin de son compagnon.">
+	<title>Le chien — Compagnon de vie</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--paper: #f7f6f0;
+			--ink: #202b25;
+			--muted: #68736b;
+			--green: #315d45;
+			--lime: #d6e36c;
+			--coral: #e47b5d;
+			--line: #d9ddd3;
+			--white: #fffefa;
+			--serif: Georgia, "Times New Roman", serif;
+			--sans: "DM Sans", sans-serif;
+			--display: "Manrope", sans-serif;
+		}
+
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+		body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+		button, input, select { font: inherit; }
+		button { color: inherit; }
+		img { display: block; width: 100%; }
+		.shell { width: min(1200px, calc(100% - 72px)); margin: 0 auto; }
+
+		.site-header { height: 82px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+		.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+		.brand { display: inline-flex; align-items: center; gap: 10px; padding: 0; border: 0; background: transparent; cursor: pointer; font: 800 16px var(--display); letter-spacing: 0; }
+		.brand-mark { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--lime); font-size: 15px; }
+		.nav { display: flex; align-items: center; gap: 30px; }
+		.nav button { padding: 8px 0; border: 0; background: transparent; color: var(--muted); cursor: pointer; font-size: 13px; transition: color .2s; }
+		.nav button:hover, .nav button:focus-visible { color: var(--green); }
+		.header-note { color: var(--muted); font-size: 12px; }
+
+		.hero { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 8.5%; min-height: 610px; padding: 56px 0 70px; }
+		.eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+		.eyebrow::before { content: ""; width: 27px; height: 1px; background: var(--coral); }
+		h1, h2, h3, p { margin-top: 0; }
+		h1 { max-width: 560px; margin-bottom: 24px; font: 500 clamp(50px, 6vw, 78px)/.99 var(--display); letter-spacing: 0; }
+		h1 em { color: var(--green); font-family: var(--serif); font-weight: 400; }
+		.hero-copy { max-width: 430px; margin-bottom: 30px; color: var(--muted); font-size: 16px; line-height: 1.75; }
+		.button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+		.button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 18px; padding: 0 19px; border: 1px solid var(--green); border-radius: 3px; background: var(--green); color: white; cursor: pointer; font-size: 13px; font-weight: 600; transition: background .2s, color .2s, transform .2s; }
+		.button:hover { transform: translateY(-2px); background: #254936; }
+		.button.secondary { border-color: var(--line); background: transparent; color: var(--ink); }
+		.button.secondary:hover { border-color: var(--green); color: var(--green); }
+		.hero-foot { display: flex; align-items: center; gap: 13px; margin-top: 42px; color: var(--muted); font-size: 12px; }
+		.hero-foot strong { color: var(--ink); font: 600 13px var(--display); }
+		.foot-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--coral); }
+		.hero-visual { position: relative; min-width: 0; }
+		.hero-photo { height: 470px; object-fit: cover; object-position: center 38%; border-radius: 2px; }
+		.photo-caption { position: absolute; right: -18px; bottom: 25px; width: 205px; padding: 19px 20px; background: var(--lime); }
+		.photo-caption span { display: block; margin-bottom: 7px; color: #53612b; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+		.photo-caption strong { font: 600 18px/1.25 var(--display); }
+		.photo-index { position: absolute; top: 18px; left: -16px; display: grid; place-items: center; width: 46px; height: 46px; border: 1px solid var(--paper); border-radius: 50%; background: var(--coral); color: white; font: 600 12px var(--display); }
+
+		.intro-strip { display: grid; grid-template-columns: 1.3fr repeat(3, 1fr); align-items: center; gap: 28px; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+		.intro-strip p { max-width: 220px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+		.fact { display: flex; align-items: center; gap: 12px; }
+		.fact-number { color: var(--coral); font: 500 29px var(--serif); }
+		.fact-label { max-width: 100px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+
+		.section { padding: 104px 0; }
+		.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 35px; margin-bottom: 36px; }
+		.section-heading h2 { max-width: 610px; margin-bottom: 0; font: 500 clamp(36px, 4.5vw, 56px)/1.05 var(--display); letter-spacing: 0; }
+		.section-heading h2 em { color: var(--green); font-family: var(--serif); font-weight: 400; }
+		.section-heading > p { max-width: 300px; margin-bottom: 3px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+		.breed-tools { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-bottom: 24px; }
+		.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+		.filter-button { padding: 9px 13px; border: 1px solid var(--line); border-radius: 2px; background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; transition: .2s; }
+		.filter-button[aria-pressed="true"], .filter-button:hover { border-color: var(--green); background: var(--green); color: white; }
+		.search { width: min(250px, 100%); height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 2px; outline: 0; background: transparent; font-size: 12px; }
+		.search:focus { border-color: var(--green); box-shadow: 0 0 0 2px #315d4520; }
+		.breed-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+		.breed-card { min-width: 0; border: 1px solid var(--line); background: var(--white); animation: enter .35s both; }
+		.breed-card[hidden] { display: none; }
+		.breed-image { aspect-ratio: 1.28; object-fit: cover; }
+		.breed-body { padding: 17px 16px 19px; }
+		.breed-meta { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 10px; color: var(--green); font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+		.breed-meta span:last-child { color: var(--coral); }
+		.breed-body h3 { margin-bottom: 8px; font: 600 19px var(--display); }
+		.breed-body p { min-height: 40px; margin-bottom: 15px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+		.breed-details { display: flex; justify-content: space-between; gap: 12px; padding-top: 13px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+		.breed-details strong { color: var(--ink); font-weight: 600; }
+		.empty-state { display: none; padding: 40px 0; color: var(--muted); text-align: center; }
+
+		.care-band { background: #e9eee2; }
+		.care-band .section { padding-top: 88px; padding-bottom: 88px; }
+		.care-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #c7d0c1; }
+		.care-item { min-height: 215px; padding: 27px 27px 20px 0; border-bottom: 1px solid #c7d0c1; }
+		.care-item + .care-item { padding-left: 27px; border-left: 1px solid #c7d0c1; }
+		.care-number { display: inline-block; margin-bottom: 25px; color: var(--coral); font: 500 17px var(--serif); }
+		.care-item h3 { margin-bottom: 11px; font: 600 20px var(--display); }
+		.care-item p { max-width: 310px; margin: 0; color: #5f6b61; font-size: 13px; line-height: 1.75; }
+		.care-note { display: flex; align-items: flex-start; gap: 15px; margin-top: 24px; padding: 17px 19px; background: var(--white); }
+		.care-note strong { flex: 0 0 auto; color: var(--green); font: 700 11px var(--display); text-transform: uppercase; }
+		.care-note p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+
+		.guide { display: grid; grid-template-columns: .8fr 1.2fr; gap: 9%; align-items: start; }
+		.guide-title h2 { margin-bottom: 15px; font: 500 clamp(38px, 4.6vw, 58px)/1.05 var(--display); }
+		.guide-title h2 em { color: var(--green); font-family: var(--serif); font-weight: 400; }
+		.guide-title p { max-width: 330px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+		.guide-form { padding: 28px; border: 1px solid var(--line); background: var(--white); }
+		.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+		.field label { display: block; margin-bottom: 9px; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+		.field select { width: 100%; height: 46px; padding: 0 12px; border: 1px solid var(--line); border-radius: 2px; background: var(--paper); color: var(--ink); font-size: 13px; }
+		.guide-result { min-height: 78px; display: flex; align-items: center; gap: 17px; margin-top: 22px; padding: 16px; background: #eef1e9; }
+		.result-mark { display: grid; flex: 0 0 36px; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--lime); color: var(--green); font: 700 15px var(--display); }
+		.guide-result p { margin: 0; color: #526057; font-size: 12px; line-height: 1.65; }
+		.guide-result strong { color: var(--ink); }
+
+		.closing { display: grid; grid-template-columns: 1fr 1fr; min-height: 340px; background: var(--green); color: white; }
+		.closing-image { min-height: 340px; object-fit: cover; object-position: center 52%; }
+		.closing-copy { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 50px clamp(30px, 7vw, 90px); }
+		.closing-copy .eyebrow { color: var(--lime); }
+		.closing-copy h2 { max-width: 400px; margin-bottom: 17px; font: 500 clamp(33px, 4vw, 48px)/1.08 var(--display); }
+		.closing-copy h2 em { color: var(--lime); font-family: var(--serif); font-weight: 400; }
+		.closing-copy p { max-width: 370px; margin-bottom: 25px; color: #d4e0d4; font-size: 13px; line-height: 1.7; }
+		.closing .button { border-color: var(--lime); background: var(--lime); color: var(--ink); }
+		.closing .button:hover { background: white; }
+		footer { display: flex; justify-content: space-between; gap: 20px; padding: 25px 0; color: var(--muted); font-size: 11px; }
+		footer strong { color: var(--ink); font-family: var(--display); }
+		.reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+		.reveal.visible { opacity: 1; transform: translateY(0); }
+		@keyframes enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+		@media (max-width: 850px) {
+			.shell { width: min(100% - 44px, 680px); }
+			.header-note { display: none; }
+			.hero { gap: 5%; min-height: 540px; }
+			.hero-photo { height: 400px; }
+			.intro-strip { grid-template-columns: repeat(3, 1fr); }
+			.intro-strip > p { grid-column: 1 / -1; max-width: 400px; }
+			.breed-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+			.section { padding: 80px 0; }
+			.guide { gap: 5%; }
+		}
+		@media (max-width: 600px) {
+			.shell { width: calc(100% - 36px); }
+			.site-header { height: 70px; }
+			.header-inner { gap: 12px; }
+			.nav { gap: 15px; }
+			.nav button { font-size: 11px; }
+			.nav button:last-child { display: none; }
+			.brand { font-size: 14px; }
+			.hero { grid-template-columns: 1fr; gap: 32px; padding: 54px 0 46px; }
+			h1 { max-width: 460px; font-size: clamp(49px, 14vw, 68px); }
+			.hero-copy { font-size: 14px; }
+			.hero-foot { margin-top: 27px; }
+			.hero-photo { height: 360px; }
+			.photo-caption { right: -7px; bottom: 15px; width: 175px; padding: 15px; }
+			.photo-index { left: -7px; }
+			.intro-strip { gap: 16px 8px; padding: 20px 0; }
+			.fact { align-items: flex-start; gap: 7px; }
+			.fact-number { font-size: 24px; }
+			.fact-label { font-size: 10px; }
+			.section { padding: 68px 0; }
+			.section-heading { display: block; margin-bottom: 27px; }
+			.section-heading > p { margin-top: 16px; }
+			.breed-tools { align-items: stretch; flex-direction: column; }
+			.filters { gap: 6px; }
+			.filter-button { padding: 8px 10px; font-size: 11px; }
+			.search { width: 100%; }
+			.breed-grid { gap: 10px; }
+			.breed-image { aspect-ratio: 1.1; }
+			.breed-body { padding: 13px 11px 14px; }
+			.breed-body h3 { font-size: 16px; }
+			.breed-body p { min-height: 57px; font-size: 11px; }
+			.breed-meta { font-size: 9px; }
+			.breed-details { font-size: 10px; }
+			.care-band .section { padding: 66px 0; }
+			.care-grid { grid-template-columns: 1fr; }
+			.care-item, .care-item + .care-item { min-height: 0; padding: 21px 0; border-left: 0; }
+			.care-number { margin-bottom: 12px; }
+			.care-note { flex-direction: column; gap: 8px; }
+			.guide { grid-template-columns: 1fr; gap: 28px; }
+			.guide-form { padding: 19px; }
+			.field-row { gap: 11px; }
+			.field label { font-size: 10px; }
+			.field select { padding: 0 8px; font-size: 12px; }
+			.closing { grid-template-columns: 1fr; }
+			.closing-image { min-height: 235px; height: 235px; }
+			.closing-copy { padding: 39px 24px 42px; }
+			footer { flex-direction: column; gap: 8px; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+			.reveal { opacity: 1; transform: none; }
+		}
+	</style>
+</head>
+<body>
+	<header class="site-header">
+		<div class="shell header-inner">
+			<button class="brand" type="button" data-scroll="top" aria-label="Retour en haut de page"><span class="brand-mark" aria-hidden="true">C</span> COMPAGNONS</button>
+			<nav class="nav" aria-label="Navigation principale">
+				<button type="button" data-scroll="races">Les races</button>
+				<button type="button" data-scroll="soins">Bien-être</button>
+				<button type="button" data-scroll="guide">Mon quotidien</button>
+			</nav>
+			<span class="header-note">Le guide des vies à quatre pattes</span>
+		</div>
+	</header>
+
+	<main id="top">
+		<section class="shell hero">
+			<div class="hero-content reveal">
+				<p class="eyebrow">Le grand dossier · N° 01</p>
+				<h1>Le chien,<br>à hauteur de <em>vie.</em></h1>
+				<p class="hero-copy">Fidèle, joueur, étonnamment à l’écoute : le chien partage nos journées depuis des millénaires. Voici de quoi mieux comprendre ce compagnon, et lui offrir une vie qui lui ressemble.</p>
+				<div class="button-row">
+					<button class="button" type="button" data-scroll="races">Explorer les races <span aria-hidden="true">→</span></button>
+					<button class="button secondary" type="button" data-scroll="soins">Les bons repères</button>
+				</div>
+				<div class="hero-foot"><strong>Un animal, une vraie relation</strong><span class="foot-dot"></span><span>À découvrir ensemble</span></div>
+			</div>
+			<div class="hero-visual reveal">
+				<span class="photo-index">01</span>
+				<img class="hero-photo" src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1200&q=85" alt="Golden retriever au pelage doré dans un jardin" fetchpriority="high">
+				<div class="photo-caption"><span>Compagnon du quotidien</span><strong>Une présence qui change tout.</strong></div>
+			</div>
+		</section>
+
+		<section class="shell intro-strip" aria-label="Quelques repères">
+			<p>Avant de choisir une race, il y a surtout un rythme de vie, du temps à partager et une belle histoire à construire.</p>
+			<div class="fact"><span class="fact-number">+350</span><span class="fact-label">races reconnues dans le monde</span></div>
+			<div class="fact"><span class="fact-number">15 ans</span><span class="fact-label">et parfois bien plus à vos côtés</span></div>
+			<div class="fact"><span class="fact-number">100 %</span><span class="fact-label">unique, quel que soit son pedigree</span></div>
+		</section>
+
+		<section class="shell section" id="races">
+			<div class="section-heading reveal">
+				<div><p class="eyebrow">Portraits de famille</p><h2>Des tempéraments<br><em>à rencontrer.</em></h2></div>
+				<p>La race donne quelques indices, jamais une personnalité toute faite. Chaque chien est d’abord un individu.</p>
+			</div>
+			<div class="breed-tools">
+				<div class="filters" role="group" aria-label="Filtrer les races">
+					<button class="filter-button" type="button" data-filter="all" aria-pressed="true">Toutes</button>
+					<button class="filter-button" type="button" data-filter="famille" aria-pressed="false">Vie de famille</button>
+					<button class="filter-button" type="button" data-filter="actif" aria-pressed="false">Très actif</button>
+					<button class="filter-button" type="button" data-filter="petit" aria-pressed="false">Petit format</button>
+				</div>
+				<label><span class="visually-hidden">Rechercher une race</span><input class="search" id="breed-search" type="search" placeholder="Rechercher une race…" autocomplete="off"></label>
+			</div>
+			<div class="breed-grid" id="breed-grid">
+				<article class="breed-card" data-tags="famille actif" data-name="labrador retriever">
+					<img class="breed-image" src="https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?auto=format&fit=crop&w=700&q=80" alt="Labrador retriever assis dans l'herbe" loading="lazy">
+					<div class="breed-body"><div class="breed-meta"><span>Le sociable</span><span>Grand</span></div><h3>Labrador</h3><p>Enjoué et proche des humains, il a besoin de bouger et d'apprendre chaque jour.</p><div class="breed-details"><span>Énergie <strong>Élevée</strong></span><span>Poil <strong>court</strong></span></div></div>
+				</article>
+				<article class="breed-card" data-tags="famille" data-name="bouledogue français">
+					<img class="breed-image" src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=700&q=80" alt="Petit chien au regard attentif" loading="lazy">
+					<div class="breed-body"><div class="breed-meta"><span>Le citadin</span><span>Petit</span></div><h3>Bouledogue français</h3><p>Attachant et souvent clown, il apprécie la compagnie et les sorties tranquilles.</p><div class="breed-details"><span>Énergie <strong>Modérée</strong></span><span>Poil <strong>court</strong></span></div></div>
+				</article>
+				<article class="breed-card" data-tags="actif famille" data-name="border collie">
+					<img class="breed-image" src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=700&q=80" alt="Chien attentif prêt à jouer en plein air" loading="lazy">
+					<div class="breed-body"><div class="breed-meta"><span>L'esprit vif</span><span>Moyen</span></div><h3>Border collie</h3><p>Curieux et infatigable, il s'épanouit avec des activités variées et stimulantes.</p><div class="breed-details"><span>Énergie <strong>Très élevée</strong></span><span>Poil <strong>mi-long</strong></span></div></div>
+				</article>
+				<article class="breed-card" data-tags="petit famille" data-name="cavalier king charles">
+					<img class="breed-image" src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=700&q=80" alt="Chien de petit gabarit dans l'herbe" loading="lazy">
+					<div class="breed-body"><div class="breed-meta"><span>Le tendre</span><span>Petit</span></div><h3>Cavalier King Charles</h3><p>Doux et affectueux, il aime les promenades à son rythme et la vie près des siens.</p><div class="breed-details"><span>Énergie <strong>Modérée</strong></span><span>Poil <strong>mi-long</strong></span></div></div>
+				</article>
+			</div>
+			<p class="empty-state" id="empty-state">Aucune race ne correspond à cette recherche. Essayez un autre nom.</p>
+		</section>
+
+		<div class="care-band" id="soins">
+			<section class="shell section">
+				<div class="section-heading reveal">
+					<div><p class="eyebrow">Les essentiels, sans raccourci</p><h2>Son bien-être se joue<br><em>tous les jours.</em></h2></div>
+					<p>Le bon équilibre ne tient pas à une recette universelle. Il se construit en observant son chien et en adaptant ses habitudes.</p>
+				</div>
+				<div class="care-grid">
+					<article class="care-item"><span class="care-number">01 / Bouger</span><h3>Dehors, à son rythme</h3><p>Les sorties sont aussi l'occasion de renifler, rencontrer et explorer. Leur durée dépend de son âge, sa santé et son tempérament.</p></article>
+					<article class="care-item"><span class="care-number">02 / Comprendre</span><h3>Apprendre avec confiance</h3><p>Des repères clairs, des récompenses bien choisies et des séances courtes aident à progresser sans brusquer la relation.</p></article>
+					<article class="care-item"><span class="care-number">03 / Prévenir</span><h3>Prendre soin en amont</h3><p>Alimentation adaptée, suivi vétérinaire, dents et pelage : les petits gestes réguliers font une vraie différence.</p></article>
+				</div>
+				<div class="care-note"><strong>À retenir</strong><p>Un changement soudain de comportement, d'appétit ou d'énergie mérite l'avis d'un vétérinaire. Ce guide ne remplace pas un suivi professionnel.</p></div>
+			</section>
+		</div>
+
+		<section class="shell section guide" id="guide">
+			<div class="guide-title reveal"><p class="eyebrow">Une journée qui lui va</p><h2>Son quotidien,<br><em>à sa mesure.</em></h2><p>Quelques repères indicatifs pour démarrer. Les besoins varient selon le chien : ajustez toujours avec votre vétérinaire.</p></div>
+			<div class="guide-form">
+				<div class="field-row">
+					<div class="field"><label for="dog-size">Son gabarit</label><select id="dog-size"><option value="petit">Petit</option><option value="moyen" selected>Moyen</option><option value="grand">Grand</option></select></div>
+					<div class="field"><label for="dog-age">Son âge</label><select id="dog-age"><option value="puppy">Chiot</option><option value="adult" selected>Adulte</option><option value="senior">Senior</option></select></div>
+				</div>
+				<div class="guide-result" aria-live="polite"><span class="result-mark" aria-hidden="true">i</span><p id="guide-message"><strong>Pour un chien adulte de taille moyenne :</strong> prévoyez plusieurs sorties réparties dans la journée, du jeu et de vrais temps de repos.</p></div>
+			</div>
+		</section>
+
+		<section class="shell closing">
+			<img class="closing-image" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1100&q=85" alt="Portrait rapproché d'un chien au regard doux" loading="lazy">
+			<div class="closing-copy"><p class="eyebrow">La plus belle règle</p><h2>Choisir le chien,<br>c'est choisir <em>un lien.</em></h2><p>Rencontre, patience et engagement : c'est là que commence une belle vie à deux, qu'il soit de race ou croisé.</p><button class="button" type="button" data-scroll="races">Revoir les portraits <span aria-hidden="true">↑</span></button></div>
+		</section>
+	</main>
+
+	<footer class="shell"><strong>COMPAGNONS · Le chien</strong><span>Un guide pour mieux vivre ensemble · 2026</span></footer>
+	<style>.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }</style>
+	<script>
+		const scrollButtons = document.querySelectorAll('[data-scroll]');
+		scrollButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				const targetId = button.dataset.scroll;
+				const target = targetId === 'top' ? document.documentElement : document.getElementById(targetId);
+				target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			});
+		});
+
+		const filterButtons = document.querySelectorAll('.filter-button');
+		const breedCards = [...document.querySelectorAll('.breed-card')];
+		const searchInput = document.getElementById('breed-search');
+		const emptyState = document.getElementById('empty-state');
+		let activeFilter = 'all';
+
+		function updateBreeds() {
+			const searchTerm = searchInput.value.trim().toLocaleLowerCase('fr');
+			let visibleCount = 0;
+			breedCards.forEach((card) => {
+				const matchesFilter = activeFilter === 'all' || card.dataset.tags.split(' ').includes(activeFilter);
+				const matchesSearch = card.dataset.name.includes(searchTerm);
+				card.hidden = !(matchesFilter && matchesSearch);
+				if (!card.hidden) visibleCount += 1;
+			});
+			emptyState.style.display = visibleCount ? 'none' : 'block';
+		}
+
+		filterButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				activeFilter = button.dataset.filter;
+				filterButtons.forEach((filter) => filter.setAttribute('aria-pressed', String(filter === button)));
+				updateBreeds();
+			});
+		});
+		searchInput.addEventListener('input', updateBreeds);
+
+		const recommendations = {
+			petit: {
+				puppy: 'Un chiot a besoin de sorties très courtes, de découvertes progressives et de beaucoup de sommeil. Laissez-le explorer à son rythme.',
+				adult: 'Pour un petit chien adulte, répartissez les sorties dans la journée et ajoutez des jeux de flair à la maison.',
+				senior: 'Privilégiez des promenades régulières et douces, avec un couchage confortable et facile d’accès.'
+			},
+			moyen: {
+				puppy: 'Un chiot a besoin de sorties très courtes, de découvertes progressives et de beaucoup de sommeil. Laissez-le explorer à son rythme.',
+				adult: 'Prévoyez plusieurs sorties réparties dans la journée, du jeu et de vrais temps de repos.',
+				senior: 'Gardez des sorties régulières mais adaptez leur durée. Le repos et le confort comptent davantage avec l’âge.'
+			},
+			grand: {
+				puppy: 'Un chiot a besoin de sorties très courtes, de découvertes progressives et de beaucoup de sommeil. Laissez-le explorer à son rythme.',
+				adult: 'Un grand chien adulte apprécie plusieurs sorties quotidiennes et de l’espace pour se dépenser sans négliger le repos.',
+				senior: 'Fractionnez les promenades en sorties plus courtes et surveillez son confort articulaire avec votre vétérinaire.'
+			}
+		};
+		const dogSize = document.getElementById('dog-size');
+		const dogAge = document.getElementById('dog-age');
+		const guideMessage = document.getElementById('guide-message');
+		function updateGuide() {
+			const sizeLabel = { petit: 'petit', moyen: 'moyen', grand: 'grand' }[dogSize.value];
+			const ageLabel = dogAge.options[dogAge.selectedIndex].text.toLocaleLowerCase('fr');
+			guideMessage.innerHTML = `<strong>Pour un chien ${ageLabel} de gabarit ${sizeLabel} :</strong> ${recommendations[dogSize.value][dogAge.value]}`;
+		}
+		dogSize.addEventListener('change', updateGuide);
+		dogAge.addEventListener('change', updateGuide);
+
+		const revealObserver = new IntersectionObserver((entries, observer) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+					observer.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.12 });
+		document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+	</script>
+</body>
+</html>
